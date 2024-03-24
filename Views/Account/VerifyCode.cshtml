@@ -1,0 +1,44 @@
+@model VerifyCodeViewModel
+
+<div class="login-page">
+    <div class="lead">
+        <h1>Enter Verification Code</h1>
+    </div>
+
+    <partial name="_ValidationSummary" />
+
+    <div class="row">
+
+        @if (Model.EnableLocalLogin)
+        {
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form asp-route="VerifyCode">
+                            <input type="hidden" asp-for="ReturnUrl" />
+
+                            <div class="form-group">
+                                <label asp-for="Code"></label>
+                                <input class="form-control" placeholder="Code" asp-for="Code" autofocus>
+                            </div>
+                            @if (Model.AllowRememberLogin)
+                            {
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" asp-for="RememberLogin">
+                                        <label class="form-check-label" asp-for="RememberLogin">
+                                            Remember this browser?
+                                        </label>
+                                    </div>
+                                </div>
+                            }
+
+                            <button class="btn btn-primary" name="button" value="login">Login</button>
+                            <button class="btn btn-secondary" name="button" value="cancel">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
